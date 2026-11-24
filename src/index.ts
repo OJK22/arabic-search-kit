@@ -62,11 +62,51 @@ export function createArabicSearchMatcher(
   query: string,
   options: ArabicSearchOptions = {},
 ): (candidate: string) => boolean {
-  const queryTokens = tokenizeArabicSearchText(query, options);
+  const queryTokens = [...new Set(tokenizeArabicSearchText(query, options))];
   if (queryTokens.length === 0) return () => false;
 
   return (candidate: string): boolean => {
     const candidateTokens = new Set(tokenizeArabicSearchText(candidate, options));
     return queryTokens.every((token) => candidateTokens.has(token));
   };
+}
+
+/**
+ * Return the fraction of unique query tokens found in the candidate.
+ * The score is between 0 and 1; an empty query always scores 0.
+ */
+export function scoreArabicSearchMatch(
+  query: string,
+  candidate: string,
+  options: ArabicSearchOptions = {},
+): number {
+  const queryTokens = [...new Set(tokenizeArabicSearchText(query, options))];
+  if (queryTokens.length === 0) return 0;
+
+  const candidateTokens = new Set(tokenizeArabicSearchText(candidate, options));
+  const matchedTokens = queryTokens.filter((token) => candidateTokens.has(token)).length;
+  return matchedTokens / queryTokens.length;
+}
+
+export interface RankedArabicSearchResult<T> {
+  item: T;
+  score: number;
+}
+
+/**
+ * Rank items by query-token coverage, highest score first.
+ * Items with no matching query tokens are omitted. Equal scores retain input order.
+ */
+export function rankArabicSearchResults<T>(
+  items: readonly T[],
+  query: string,
+  getText: (item: T) => string,
+  options: ArabicSearchOptions = {},
+): RankedArabicSearchResult<T>[] {
+  if (tokenizeArabicSearchText(query, options).length === 0) return [];
+
+  return items
+    .map((item) => ({ item, score: scoreArabicSearchMatch(query, getText(item), options) }))
+    .filter((result) => result.score > 0)
+    .sort((a, b) => b.score - a.score);
 }
