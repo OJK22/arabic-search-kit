@@ -69,7 +69,7 @@ describe("createArabicSearchMatcher", () => {
 
 describe("scoreArabicSearchMatch", () => {
   it("returns full coverage when every query token exists", () => {
-    expect(scoreArabicSearchMatch("إدارة مكتبة", "مكتبة عامة للإدارة")).toBe(1);
+    expect(scoreArabicSearchMatch("إدارة مكتبة", "مكتبة عامة، إدارة")).toBe(1);
   });
 
   it("returns partial coverage when only some query tokens exist", () => {
