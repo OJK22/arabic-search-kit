@@ -1,7 +1,7 @@
 {
   "name": "arabic-search-kit",
-  "version": "0.1.0",
-  "description": "A small, dependency-free Arabic text normalizer and search matcher for JavaScript and TypeScript.",
+  "version": "0.2.0",
+  "description": "Dependency-free Arabic text normalization, matching, scoring, and ranking for JavaScript and TypeScript.",
   "type": "module",
   "license": "MIT",
   "sideEffects": false,
@@ -17,6 +17,22 @@
     "dist",
     "README.md",
     "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OJK22/books.-v2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/OJK22/books.-v2/issues"
+  },
+  "homepage": "https://github.com/OJK22/books.-v2#readme",
+  "keywords": [
+    "arabic",
+    "arabic-search",
+    "text-normalization",
+    "search",
+    "typescript",
+    "rtl"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
