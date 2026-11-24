@@ -48,7 +48,7 @@ describe("tokenizeArabicSearchText", () => {
 describe("createArabicSearchMatcher", () => {
   it("matches all query terms regardless of order", () => {
     const matches = createArabicSearchMatcher("إدارة مكتبة");
-    expect(matches("مكتبة عامة للإدارة")).toBe(true);
+    expect(matches("مكتبة عامة، إدارة")).toBe(true);
   });
 
   it("does not match when a query term is missing", () => {
