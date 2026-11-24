@@ -24,7 +24,7 @@ The normalizer intentionally does **not** merge distinct letters such as ع and 
 The package is prepared for npm publishing. Until a release is published, install from Git:
 
 ```bash
-npm install github:OJK22/books.-v2
+npm install github:OJK22/arabic-search-kit
 ```
 
 ## Usage
