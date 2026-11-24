@@ -20,12 +20,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/OJK22/books.-v2.git"
+    "url": "https://github.com/OJK22/arabic-search-kit.git"
   },
   "bugs": {
-    "url": "https://github.com/OJK22/books.-v2/issues"
+    "url": "https://github.com/OJK22/arabic-search-kit/issues"
   },
-  "homepage": "https://github.com/OJK22/books.-v2#readme",
+  "homepage": "https://github.com/OJK22/arabic-search-kit#readme",
   "keywords": [
     "arabic",
     "arabic-search",
