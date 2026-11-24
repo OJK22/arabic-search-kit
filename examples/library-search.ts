@@ -13,7 +13,7 @@ const books: Book[] = [
   { id: 4, title: "فهرسة الكتب والمراجع", author: "ليلى عادل" },
 ];
 
-const query = "ادارة مكتبة";
+const query = "ادارة المكتبات";
 
 const results = rankArabicSearchResults(
   books,
